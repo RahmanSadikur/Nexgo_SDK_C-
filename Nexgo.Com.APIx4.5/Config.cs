@@ -78,15 +78,16 @@ namespace Nexgo.Com.APIx4._5
 
         private void SendingDataToPos(string data)
         {
-            if (!serial.IsOpen)
-            {
-                serial.Open();
-            }
-            serial.DiscardInBuffer();
-            serial.DiscardOutBuffer();
+            
             try
             {
-                
+                if (!serial.IsOpen)
+                {
+                    serial.Open();
+                }
+                serial.DiscardInBuffer();
+                serial.DiscardOutBuffer();
+
                 isError = false;
 
                 byte[] hexstring = StringToByteArray(data);
@@ -104,14 +105,15 @@ namespace Nexgo.Com.APIx4._5
         }
         public void SendingConfirmationToPos(string data="020001010301")
         {
-            if (!serial.IsOpen)
-            {
-                serial.Open();
-            }
-            serial.DiscardInBuffer();
-            serial.DiscardOutBuffer();
+           
             try
             {
+                if (!serial.IsOpen)
+                {
+                    serial.Open();
+                }
+                serial.DiscardInBuffer();
+                serial.DiscardOutBuffer();
 
                 isError = false;
 
