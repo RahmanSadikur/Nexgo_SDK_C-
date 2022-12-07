@@ -1,0 +1,13 @@
+C:\Users\OFFICE\source\repos\Nexgo.client\Nexgo.client\bin\Debug\Nexgo.client.exe.config
+C:\Users\OFFICE\source\repos\Nexgo.client\Nexgo.client\bin\Debug\Nexgo.client.exe
+C:\Users\OFFICE\source\repos\Nexgo.client\Nexgo.client\bin\Debug\Nexgo.client.pdb
+C:\Users\OFFICE\source\repos\Nexgo.client\Nexgo.client\bin\Debug\Nexgo.Com.APIx4.5.dll
+C:\Users\OFFICE\source\repos\Nexgo.client\Nexgo.client\bin\Debug\Nexgo.Com.APIx4.5.pdb
+C:\Users\OFFICE\source\repos\Nexgo.client\Nexgo.client\obj\Debug\Nexgo.client.csproj.AssemblyReference.cache
+C:\Users\OFFICE\source\repos\Nexgo.client\Nexgo.client\obj\Debug\Nexgo.client.Form1.resources
+C:\Users\OFFICE\source\repos\Nexgo.client\Nexgo.client\obj\Debug\Nexgo.client.Properties.Resources.resources
+C:\Users\OFFICE\source\repos\Nexgo.client\Nexgo.client\obj\Debug\Nexgo.client.csproj.GenerateResource.cache
+C:\Users\OFFICE\source\repos\Nexgo.client\Nexgo.client\obj\Debug\Nexgo.client.csproj.CoreCompileInputs.cache
+C:\Users\OFFICE\source\repos\Nexgo.client\Nexgo.client\obj\Debug\Nexgo.client.csproj.CopyComplete
+C:\Users\OFFICE\source\repos\Nexgo.client\Nexgo.client\obj\Debug\Nexgo.client.exe
+C:\Users\OFFICE\source\repos\Nexgo.client\Nexgo.client\obj\Debug\Nexgo.client.pdb

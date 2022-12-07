@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33027.164
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexgo.client", "Nexgo.client\Nexgo.client.csproj", "{98B0F441-EC93-44A2-A00D-2B110DD40DEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexgo.Com.APIx4.5", "Nexgo.Com.APIx4.5\Nexgo.Com.APIx4.5.csproj", "{59171239-02FC-4175-BFCF-3ACBE683CFF9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98B0F441-EC93-44A2-A00D-2B110DD40DEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98B0F441-EC93-44A2-A00D-2B110DD40DEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98B0F441-EC93-44A2-A00D-2B110DD40DEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98B0F441-EC93-44A2-A00D-2B110DD40DEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59171239-02FC-4175-BFCF-3ACBE683CFF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59171239-02FC-4175-BFCF-3ACBE683CFF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59171239-02FC-4175-BFCF-3ACBE683CFF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59171239-02FC-4175-BFCF-3ACBE683CFF9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A8E6DFA5-7C49-4FD5-88C7-CABD2EBD9A88}
+	EndGlobalSection
+EndGlobal
