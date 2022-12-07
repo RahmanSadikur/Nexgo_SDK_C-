@@ -62,7 +62,7 @@ namespace Nexgo.Com.APIx4._5
                 }
             }
             serial.PortName = portName; //Com Port Name                
-            serial.BaudRate = 9600; //COM Port 
+            serial.BaudRate = 115200; //COM Port 
             serial.Handshake = System.IO.Ports.Handshake.None;
             serial.Parity = Parity.None;
             serial.DataBits = 8;
@@ -86,18 +86,11 @@ namespace Nexgo.Com.APIx4._5
             serial.DiscardOutBuffer();
             try
             {
-                // serial.Write(data);
+                
                 isError = false;
-                byte[] hexstring = Encoding.ASCII.GetBytes(data);
-                serial.Write(hexstring, 0, hexstring.Length);
 
-                //foreach (byte hexval in hexstring)
-                //{
-                //    byte[] _hexval = new byte[] { hexval };     // need to convert byte 
-                //                                                // to byte[] to write
-                //    serial.Write(_hexval, 0, 1);
-                //    Thread.Sleep(1);
-                //}
+                byte[] hexstring = StringToByteArray(data);
+                serial.Write(hexstring, 0, hexstring.Length);
 
 
 
@@ -109,7 +102,32 @@ namespace Nexgo.Com.APIx4._5
 
             }
         }
-   
+        public void SendingConfirmationToPos(string data="020001010301")
+        {
+            if (!serial.IsOpen)
+            {
+                serial.Open();
+            }
+            serial.DiscardInBuffer();
+            serial.DiscardOutBuffer();
+            try
+            {
+
+                isError = false;
+
+                byte[] hexstring = StringToByteArray(data);
+                serial.Write(hexstring, 0, hexstring.Length);
+
+
+
+            }
+            catch (Exception ex)
+            {
+                this.isError = true;
+                this.errorMessage = "Failed to SEND\n" + data + "\n" + ex + "\n";
+
+            }
+        }
         public void ConvertStringIntoMesg(string dataString) {
             this.dataString = dataString;
             int count = this.dataString.Count() + 1;

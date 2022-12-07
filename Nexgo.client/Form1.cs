@@ -17,6 +17,7 @@ namespace Nexgo.client
     {
         private  Config config;
         SerialPort _serialPort;
+        public string receievedData = "";
 
         // delegate is used to write to a UI control from a non-UI thread
         private delegate void SetTextDeleg(string text);
@@ -36,18 +37,27 @@ namespace Nexgo.client
                 }
             }
             _serialPort.PortName = portName; //Com Port Name                
-            _serialPort.BaudRate = 9600; //COM Port 
+            _serialPort.BaudRate = 115200; //COM Port 
             _serialPort.Handshake = System.IO.Ports.Handshake.None;
             _serialPort.Parity = Parity.None;
             _serialPort.DataBits = 8;
             _serialPort.StopBits = StopBits.One;
             _serialPort.ReadTimeout = 500;
             _serialPort.WriteTimeout = 500;
+            
             if (_serialPort.IsOpen)
             {
                 _serialPort.Close();
             }
-            _serialPort.Open();
+            try
+            {
+                _serialPort.Open();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
             this.config = new Config(_serialPort);
 
         }
@@ -96,13 +106,32 @@ namespace Nexgo.client
         void sp_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             Thread.Sleep(500);
-            string data = _serialPort.ReadLine();
-            this.BeginInvoke(new SetTextDeleg(si_DataReceived), new object[] { data });
+           
+            try
+            {
+                receievedData = _serialPort.ReadExisting();
+                
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.StackTrace);
+            }
+            
+            this.BeginInvoke(new SetTextDeleg(si_DataReceived), new object[] { receievedData });
+            
         }
 
         private void si_DataReceived(string data)
         {
-            outputTextBox.Text = data.Trim();
+            recievedoutputrtxb.Text = receievedData.Trim();
+            Console.WriteLine(receievedData);
+        }
+
+        private void confirmbtn_Click(object sender, EventArgs e)
+        {
+           
+            config.SendingConfirmationToPos();
+            
         }
     }
 }
