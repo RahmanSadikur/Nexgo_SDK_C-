@@ -15,7 +15,7 @@ namespace Nexgo.client
 {
     public partial class Form1 : Form
     {
-        private  Config config;
+        private  CityESRProtocl config;
         SerialPort _serialPort;
         public string receievedData = "";
 
@@ -25,12 +25,13 @@ namespace Nexgo.client
         {
             InitializeComponent();
             _serialPort = new SerialPort();
-            string portName = "COM6";
+            string portName = "COM10";
             _serialPort.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
+            _serialPort.RtsEnable = true;
             string[] comPorts = SerialPort.GetPortNames();
             if (comPorts.Any())
             {
-                var pname = comPorts.FirstOrDefault(a => a.Contains("COM6"));
+                var pname = comPorts.FirstOrDefault(a => a.Contains("COM10"));
                 if (!string.IsNullOrEmpty(pname))
                 {
                     _serialPort.PortName = pname;
@@ -44,6 +45,7 @@ namespace Nexgo.client
             _serialPort.StopBits = StopBits.One;
             _serialPort.ReadTimeout = 500;
             _serialPort.WriteTimeout = 500;
+
             
             if (_serialPort.IsOpen)
             {
@@ -58,10 +60,13 @@ namespace Nexgo.client
                 MessageBox.Show(ex.Message);
             }
             
-            this.config = new Config(_serialPort);
+            this.config = new CityESRProtocl(_serialPort);
 
         }
-
+        ~Form1()
+        {
+            _serialPort.Close();
+        }
         private void ConvertBtn_Click(object sender, EventArgs e)
         {
             
@@ -109,7 +114,11 @@ namespace Nexgo.client
            
             try
             {
-                receievedData = _serialPort.ReadExisting();
+                //SerialPort sp = (SerialPort)sender;
+                this.receievedData = _serialPort.ReadExisting();
+                var byteformatedText = config.StringToHex(this.receievedData);
+                this.receievedData = byteformatedText.ToString();
+                this.BeginInvoke(new SetTextDeleg(si_DataReceived), new object[] { this.receievedData });
                 
             }
             catch(Exception ex)
@@ -117,19 +126,27 @@ namespace Nexgo.client
                 MessageBox.Show(ex.StackTrace);
             }
             
-            this.BeginInvoke(new SetTextDeleg(si_DataReceived), new object[] { receievedData });
+            
             
         }
 
         private void si_DataReceived(string data)
         {
-            recievedoutputrtxb.Text = receievedData.Trim();
-            Console.WriteLine(receievedData);
+            
+            try
+            {
+                recievedoutputrtxb.Text = receievedData.Trim();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.StackTrace);
+            }
+            
         }
 
         private void confirmbtn_Click(object sender, EventArgs e)
         {
-           
+            
             config.SendingDataToPos();
             
         }

@@ -11,3 +11,14 @@ C:\Users\OFFICE\source\repos\Nexgo.client\Nexgo.client\obj\Debug\Nexgo.client.cs
 C:\Users\OFFICE\source\repos\Nexgo.client\Nexgo.client\obj\Debug\Nexgo.client.csproj.CopyComplete
 C:\Users\OFFICE\source\repos\Nexgo.client\Nexgo.client\obj\Debug\Nexgo.client.exe
 C:\Users\OFFICE\source\repos\Nexgo.client\Nexgo.client\obj\Debug\Nexgo.client.pdb
+C:\Users\User-PC\Source\Repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.client\obj\Debug\Nexgo.client.exe
+C:\Users\User-PC\Source\Repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.client\obj\Debug\Nexgo.client.pdb
+C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.client\bin\Debug\Nexgo.client.exe.config
+C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.client\bin\Debug\Nexgo.client.exe
+C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.client\bin\Debug\Nexgo.client.pdb
+C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.client\bin\Debug\Nexgo.Com.APIx4.5.dll
+C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.client\bin\Debug\Nexgo.Com.APIx4.5.pdb
+C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.client\obj\Debug\Nexgo.client.csprojResolveAssemblyReference.cache
+C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.client\obj\Debug\Nexgo.client.Form1.resources
+C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.client\obj\Debug\Nexgo.client.Properties.Resources.resources
+C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.client\obj\Debug\Nexgo.client.csproj.GenerateResource.Cache
