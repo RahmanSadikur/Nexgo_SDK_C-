@@ -62,7 +62,7 @@ namespace Nexgo.Com.APIx4._5
                 }
             }
             serial.PortName = portName; //Com Port Name                
-            serial.BaudRate = 115200; //COM Port 
+            serial.BaudRate = 115200; 
             serial.Handshake = System.IO.Ports.Handshake.None;
             serial.Parity = Parity.None;
             serial.DataBits = 8;
@@ -76,7 +76,7 @@ namespace Nexgo.Com.APIx4._5
 
         }
 
-        private void SendingDataToPos(string data)
+        public void SendingDataToPos(string data = "020001010301")
         {
             
             try
@@ -103,33 +103,7 @@ namespace Nexgo.Com.APIx4._5
 
             }
         }
-        public void SendingConfirmationToPos(string data="020001010301")
-        {
-           
-            try
-            {
-                if (!serial.IsOpen)
-                {
-                    serial.Open();
-                }
-                serial.DiscardInBuffer();
-                serial.DiscardOutBuffer();
-
-                isError = false;
-
-                byte[] hexstring = StringToByteArray(data);
-                serial.Write(hexstring, 0, hexstring.Length);
-
-
-
-            }
-            catch (Exception ex)
-            {
-                this.isError = true;
-                this.errorMessage = "Failed to SEND\n" + data + "\n" + ex + "\n";
-
-            }
-        }
+       
         public void ConvertStringIntoMesg(string dataString) {
             this.dataString = dataString;
             int count = this.dataString.Count() + 1;

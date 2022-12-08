@@ -130,7 +130,7 @@ namespace Nexgo.client
         private void confirmbtn_Click(object sender, EventArgs e)
         {
            
-            config.SendingConfirmationToPos();
+            config.SendingDataToPos();
             
         }
     }
