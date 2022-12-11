@@ -1,0 +1,7 @@
+C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Data\bin\Debug\Nexgo.Data.dll
+C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Data\bin\Debug\Nexgo.Data.pdb
+C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Data\obj\Debug\Nexgo.Entity.csprojResolveAssemblyReference.cache
+C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Data\obj\Debug\Nexgo.Data.dll
+C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Data\obj\Debug\Nexgo.Data.pdb
+C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Data\bin\Debug\Nexgo.Helper.dll
+C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Data\bin\Debug\Nexgo.Helper.pdb

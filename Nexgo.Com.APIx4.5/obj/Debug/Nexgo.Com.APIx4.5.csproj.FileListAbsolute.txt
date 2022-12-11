@@ -14,3 +14,7 @@ C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Com.APIx4.5\bin\D
 C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Com.APIx4.5\bin\Debug\BouncyCastle.Crypto.dll
 C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Com.APIx4.5\bin\Debug\BouncyCastle.Crypto.xml
 C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Com.APIx4.5\obj\Debug\Nexgo.Com.APIx4.5.csprojResolveAssemblyReference.cache
+C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Com.APIx4.5\bin\Debug\Nexgo.Data.dll
+C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Com.APIx4.5\bin\Debug\Nexgo.Data.pdb
+C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Com.APIx4.5\bin\Debug\Nexgo.Helper.dll
+C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Com.APIx4.5\bin\Debug\Nexgo.Helper.pdb

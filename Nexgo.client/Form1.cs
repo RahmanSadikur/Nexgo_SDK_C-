@@ -10,20 +10,25 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Nexgo.Com.APIx4._5;
+using Nexgo.Data;
+using Nexgo.Helper;
+
 
 namespace Nexgo.client
 {
     public partial class Form1 : Form
     {
-        private  CityESRProtocl config;
+        private  CityECRProtocl config;
         SerialPort _serialPort;
         public string receievedData = "";
+        public ECRRecieverModel recieverModel;
 
         // delegate is used to write to a UI control from a non-UI thread
         private delegate void SetTextDeleg(string text);
         public Form1()
         {
             InitializeComponent();
+            this.recieverModel=new ECRRecieverModel();
             _serialPort = new SerialPort();
             string portName = "COM10";
             _serialPort.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
@@ -60,7 +65,7 @@ namespace Nexgo.client
                 MessageBox.Show(ex.Message);
             }
             
-            this.config = new CityESRProtocl(_serialPort);
+            this.config = new CityECRProtocl(_serialPort,recieverModel);
 
         }
         ~Form1()
@@ -114,11 +119,30 @@ namespace Nexgo.client
            
             try
             {
-                //SerialPort sp = (SerialPort)sender;
+                
                 this.receievedData = _serialPort.ReadExisting();
-                var byteformatedText = config.StringToHex(this.receievedData);
+                var byteformatedText = DataConvertor.StringToHex(this.receievedData);
                 this.receievedData = byteformatedText.ToString();
-                this.BeginInvoke(new SetTextDeleg(si_DataReceived), new object[] { this.receievedData });
+                if (!receievedData.Equals("020001010301") && !String.IsNullOrWhiteSpace(receievedData))
+                {
+
+                    string s = receievedData.Substring(0, receievedData.IndexOf("41"));
+                    receievedData = receievedData.Remove(0, s.Length);
+                    this.receievedData = DataConvertor.HexToString(receievedData);
+                   this.recieverModel= ModelMapper.RecieverDataMap( receievedData);
+                   this.receievedData = "Purchase Amount:" + this.recieverModel.Amount+", "+
+                       "Invoice No:" + this.recieverModel.InvoiceId + ", " +
+                       "Currency Name:" + this.recieverModel.CurrencyName + ", " +
+                       "Card No: "+this.recieverModel.MaskedCaditCardNo+", "+
+                       "Status: " + this.recieverModel.TransactionStatus + ", " +
+                       "Date: " + this.recieverModel.TransectionDateTime + ", " +
+                  
+
+                    this.BeginInvoke(new SetTextDeleg(si_DataReceived), new object[] { this.receievedData });
+                }
+               
+                
+                
                 
             }
             catch(Exception ex)

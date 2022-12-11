@@ -83,6 +83,14 @@
       <Project>{59171239-02fc-4175-bfcf-3acbe683cff9}</Project>
       <Name>Nexgo.Com.APIx4.5</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Nexgo.Data\Nexgo.Entity.csproj">
+      <Project>{3debd493-d1d5-435e-9f71-86460889c37d}</Project>
+      <Name>Nexgo.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nexgo.Helper\Nexgo.Helper.csproj">
+      <Project>{4636ac48-fed4-4519-bceb-1d57b8a574cc}</Project>
+      <Name>Nexgo.Helper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -44,11 +44,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CityESRProtocl.cs" />
+    <Compile Include="CityECRProtocl.cs" />
+    <Compile Include="CommunicationController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nexgo.Data\Nexgo.Entity.csproj">
+      <Project>{3debd493-d1d5-435e-9f71-86460889c37d}</Project>
+      <Name>Nexgo.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nexgo.Helper\Nexgo.Helper.csproj">
+      <Project>{4636ac48-fed4-4519-bceb-1d57b8a574cc}</Project>
+      <Name>Nexgo.Helper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
