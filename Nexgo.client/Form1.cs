@@ -9,7 +9,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Nexgo.Com.APIx4._5;
+using Nexgo.Com.APIx4._5.IRepo;
+using Nexgo.Com.APIx4._5.Repo;
 using Nexgo.Data;
 using Nexgo.Helper;
 
@@ -18,7 +19,7 @@ namespace Nexgo.client
 {
     public partial class Form1 : Form
     {
-        private  CityECRProtoclController cityECRProtoclController;
+        private ICityECRPrtocolController cityECRProtoclController;
 
 
         // delegate is used to write to a UI control from a non-UI thread
@@ -30,7 +31,7 @@ namespace Nexgo.client
             
                   
             this.cityECRProtoclController = new CityECRProtoclController("COM10");
-            this.cityECRProtoclController.recieverModel.PropertyChanged += new PropertyChangedEventHandler(sp_DataReceived);      
+            this.cityECRProtoclController.RecieverModel.PropertyChanged += new PropertyChangedEventHandler(sp_DataReceived);      
 
         }
 
@@ -39,9 +40,9 @@ namespace Nexgo.client
         {
             
             this.cityECRProtoclController.SendingMessageToPos(amountTextBox.Text.ToString(), invoiceTextBox.Text.ToString());
-            if (this.cityECRProtoclController.recieverModel.IsError)
+            if (this.cityECRProtoclController.RecieverModel.IsError)
             {
-                MessageBox.Show(this.cityECRProtoclController.recieverModel.ErrorMessage);
+                MessageBox.Show(this.cityECRProtoclController.RecieverModel.ErrorMessage);
                 return;
             }
             
@@ -58,7 +59,7 @@ namespace Nexgo.client
             {
 
 
-                this.BeginInvoke(new SetTextDeleg(si_DataReceived), new object[] { this.cityECRProtoclController.recieverModel.FullString });
+                this.BeginInvoke(new SetTextDeleg(si_DataReceived), new object[] { this.cityECRProtoclController.RecieverModel.FullString });
                
 
 

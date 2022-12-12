@@ -44,8 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CityECRProtoclController.cs" />
-    <Compile Include="CommunicationService.cs" />
+    <Compile Include="IRepo\ICityECRPrtocolController.cs" />
+    <Compile Include="IRepo\ICommunicationService.cs" />
+    <Compile Include="Repo\CityECRProtoclController.cs" />
+    <Compile Include="Repo\CommunicationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,5 +63,6 @@
       <Name>Nexgo.Helper</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

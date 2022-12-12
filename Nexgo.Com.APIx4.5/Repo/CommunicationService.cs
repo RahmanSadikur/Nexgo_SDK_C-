@@ -7,11 +7,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using Nexgo.Data;
 using Nexgo.Helper;
-namespace Nexgo.Com.APIx4._5
+using Nexgo.Com.APIx4._5.IRepo;
+namespace Nexgo.Com.APIx4._5.Repo
 
 {
-    
-    class CommunicationService
+
+    class CommunicationService : ICommunicationService
     {
         private readonly SerialPort serialPort;
         public ECRRecieverModel recieverModel;

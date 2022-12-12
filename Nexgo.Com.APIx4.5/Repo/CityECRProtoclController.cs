@@ -6,9 +6,10 @@ using System.IO.Ports;
 using System.Threading;
 using Nexgo.Data;
 using Nexgo.Helper;
-namespace Nexgo.Com.APIx4._5
+using Nexgo.Com.APIx4._5.IRepo;
+namespace Nexgo.Com.APIx4._5.Repo
 {
-    public class CityECRProtoclController
+    public class CityECRProtoclController : ICityECRPrtocolController
     {
         //Purchase Identifier 
         public string pruchaseIdentifier;
@@ -25,7 +26,7 @@ namespace Nexgo.Com.APIx4._5
         //invoice no
         public int invoice;
         //data into ascii format
-        public string dataString;
+        public string dataString{get;set;}
         //command starter
         public string stx = "02";
         //00 = command; 01=ack ; 02=nak
@@ -39,15 +40,20 @@ namespace Nexgo.Com.APIx4._5
         //only data feild converted to hex
         public string DataHexFormat = "";
         //ready data for sending on pos
-        public string FinalhexString = "";
+        public string FinalhexString { get; set; }
 
         public string receievedData = "";
-        public ECRRecieverModel recieverModel;
-        private CommunicationService communicationService;
+
+        public ECRRecieverModel RecieverModel
+        {
+            get;
+            set;
+        }
+        private ICommunicationService communicationService;
 
         public CityECRProtoclController(string portName) {
-            this.recieverModel = new ECRRecieverModel();
-            communicationService = new CommunicationService(recieverModel, portName);
+            RecieverModel = new ECRRecieverModel();
+            communicationService = new CommunicationService(RecieverModel, portName);
 
 
         }
@@ -65,7 +71,7 @@ namespace Nexgo.Com.APIx4._5
         {
             try
             {
-                this.recieverModel.IsError = false;
+                this.RecieverModel.IsError = false;
                 //A00 means purchase and A01 means void
                 pruchaseIdentifier = "A00";
                 //B01 Identifier and 156 BDT currency code
@@ -79,14 +85,14 @@ namespace Nexgo.Com.APIx4._5
                 //validation check
                 if (!float.TryParse(amount, out this.amount))
                 {
-                    this.recieverModel.IsError = true;
-                    this.recieverModel.ErrorMessage = "Invalid maount";
+                    this.RecieverModel.IsError = true;
+                    this.RecieverModel.ErrorMessage = "Invalid maount";
                     return;
                 }
                 if (!Int32.TryParse(invoice, out this.invoice))
                 {
-                    this.recieverModel.IsError = true;
-                    this.recieverModel.ErrorMessage = "Invalid invoice no";
+                    this.RecieverModel.IsError = true;
+                    this.RecieverModel.ErrorMessage = "Invalid invoice no";
                     return;
                 }
                 
@@ -112,8 +118,8 @@ namespace Nexgo.Com.APIx4._5
             }
             catch (Exception e)
             {
-                this.recieverModel.IsError = true;
-                this.recieverModel.ErrorMessage =e.Message;
+                this.RecieverModel.IsError = true;
+                this.RecieverModel.ErrorMessage =e.Message;
             }
            
 
