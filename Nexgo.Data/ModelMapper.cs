@@ -8,9 +8,9 @@ namespace Nexgo.Data
 {
     public static class ModelMapper
     {
-       public static ECRRecieverModel RecieverDataMap(string receievedData, ref  ECRRecieverModel recieverModel)
+       public static void RecieverDataMap(string receievedData, ref  ECRRecieverModel recieverModel)
         {
-            //ECRRecieverModel recieverModel = new ECRRecieverModel();
+           
             try
             {
                 
@@ -35,14 +35,15 @@ namespace Nexgo.Data
                       "Card No: " + recieverModel.MaskedCaditCardNo + ", " +
                       "Status: " + recieverModel.TransactionStatus + ", " +
                       "Date: " + recieverModel.TransectionDateTime + ", ";
-                return recieverModel;
+                
 
             }
             catch (Exception e)
             {
                 recieverModel.IsError = true;
                 recieverModel.ErrorMessage = e.Message;
-                return recieverModel;
+                LogHelper.Log(e.StackTrace);
+               
             }
            
         }

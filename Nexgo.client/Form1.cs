@@ -31,7 +31,7 @@ namespace Nexgo.client
             
                   
             this.cityECRProtoclController = new CityECRProtoclController("COM10");
-            this.cityECRProtoclController.RecieverModel.PropertyChanged += new PropertyChangedEventHandler(sp_DataReceived);      
+            this.cityECRProtoclController.RecieverModel.PropertyChanged += new PropertyChangedEventHandler(ReceivedData);      
 
         }
 
@@ -51,7 +51,7 @@ namespace Nexgo.client
         }
 
 
-        void sp_DataReceived(object sender, PropertyChangedEventArgs e)
+       private void ReceivedData (object sender, PropertyChangedEventArgs e)
         {
            
 
@@ -59,7 +59,7 @@ namespace Nexgo.client
             {
 
 
-                this.BeginInvoke(new SetTextDeleg(si_DataReceived), new object[] { this.cityECRProtoclController.RecieverModel.FullString });
+                this.BeginInvoke(new SetTextDeleg(InvokeUIComponent), new object[] { this.cityECRProtoclController.RecieverModel.FullString });
                
 
 
@@ -76,7 +76,7 @@ namespace Nexgo.client
 
         }
 
-        private void si_DataReceived(string data)
+        private void InvokeUIComponent(string data)
         {
             
             try
