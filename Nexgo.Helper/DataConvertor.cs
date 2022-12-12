@@ -6,24 +6,41 @@ using System.Threading.Tasks;
 
 namespace Nexgo.Helper
 {
-    public class DataConvertor
+    public static class DataConvertor
     {
-        public DataConvertor() { }
+         static DataConvertor() { }
         //hexformat string convert into byte array
         public static byte[] StringToByteArray(string hex)
         {
-            return Enumerable.Range(0, hex.Length)
-                             .Where(x => x % 2 == 0)
-                             .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
-                             .ToArray();
+            try
+            {
+                return Enumerable.Range(0, hex.Length)
+                            .Where(x => x % 2 == 0)
+                            .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
+                            .ToArray();
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log(ex.StackTrace);
+                return new byte[] { };
+            }
+           
         }
         //string convert into Hex
         public static string StringToHex(string text)
         {
+            try
+            {
+                byte[] data = Encoding.ASCII.GetBytes(text);
 
-            byte[] data = Encoding.ASCII.GetBytes(text);
+                return BitConverter.ToString(data).Replace("-", "");
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log(ex.StackTrace);
+                return string.Empty;
+            }
 
-            return BitConverter.ToString(data).Replace("-", "");
 
         }
         //hex convert into string
@@ -46,9 +63,13 @@ namespace Nexgo.Helper
 
                 return ascii;
             }
-            catch (Exception ex) { Console.WriteLine(ex.Message); }
+            catch (Exception ex) 
+            {  
+                    LogHelper.Log(ex.StackTrace);
+                    return string.Empty;
+            }
 
-            return string.Empty;
+           
         }
     }
 }

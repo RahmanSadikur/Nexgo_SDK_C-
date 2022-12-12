@@ -2,3 +2,4 @@ C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Helper\bin\Debug\
 C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Helper\bin\Debug\Nexgo.Helper.pdb
 C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Helper\obj\Debug\Nexgo.Helper.dll
 C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Helper\obj\Debug\Nexgo.Helper.pdb
+C:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Helper\obj\Debug\Nexgo.Helper.csprojResolveAssemblyReference.cache

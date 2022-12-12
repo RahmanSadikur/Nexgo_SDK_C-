@@ -69,6 +69,7 @@ namespace Nexgo.client
             catch (Exception ex)
             {
                 MessageBox.Show(ex.StackTrace);
+                LogHelper.Log(ex.StackTrace);
             }
 
 
@@ -85,6 +86,7 @@ namespace Nexgo.client
             catch (Exception ex)
             {
                 MessageBox.Show(ex.StackTrace);
+                LogHelper.Log(ex.StackTrace);
             }
             
         }
@@ -107,6 +109,7 @@ namespace Nexgo.client
             else
             {
                 MessageBox.Show("Please enter a valid port name first");
+                LogHelper.Log("Invalid port selected");
             }
             
 

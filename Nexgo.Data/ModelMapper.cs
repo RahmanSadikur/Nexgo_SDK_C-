@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Nexgo.Helper;
 namespace Nexgo.Data
 {
-   public class ModelMapper
+    public static class ModelMapper
     {
        public static ECRRecieverModel RecieverDataMap(string receievedData, ref  ECRRecieverModel recieverModel)
         {

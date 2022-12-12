@@ -87,12 +87,14 @@ namespace Nexgo.Com.APIx4._5.Repo
                 {
                     this.RecieverModel.IsError = true;
                     this.RecieverModel.ErrorMessage = "Invalid maount";
+                    LogHelper.Log(this.RecieverModel.ErrorMessage);
                     return;
                 }
                 if (!Int32.TryParse(invoice, out this.invoice))
                 {
                     this.RecieverModel.IsError = true;
                     this.RecieverModel.ErrorMessage = "Invalid invoice no";
+                    LogHelper.Log(this.RecieverModel.ErrorMessage);
                     return;
                 }
                 
@@ -120,6 +122,7 @@ namespace Nexgo.Com.APIx4._5.Repo
             {
                 this.RecieverModel.IsError = true;
                 this.RecieverModel.ErrorMessage =e.Message;
+                LogHelper.Log(e.StackTrace);
             }
            
 
@@ -127,15 +130,24 @@ namespace Nexgo.Com.APIx4._5.Repo
 
         private string CheckSumCalculate(string d)
         {
-            byte[] data = DataConvertor.StringToByteArray(d);
-                
-            byte l = 0;
-            for(int i =0 ; i < data.Length; i++)
+            try
             {
-                l ^= data[i];
+                byte[] data = DataConvertor.StringToByteArray(d);
+
+                byte l = 0;
+                for (int i = 0; i < data.Length; i++)
+                {
+                    l ^= data[i];
+                }
+
+                return l.ToString("X");
             }
-          
-            return l.ToString("X");
+            catch (Exception ex)
+            {
+                LogHelper.Log(ex.StackTrace);
+                return string.Empty;
+            }
+
         }
        
       
