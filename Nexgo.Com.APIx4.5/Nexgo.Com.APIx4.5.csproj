@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CityECRProtocl.cs" />
+    <Compile Include="CityECRProtoclController.cs" />
     <Compile Include="CommunicationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

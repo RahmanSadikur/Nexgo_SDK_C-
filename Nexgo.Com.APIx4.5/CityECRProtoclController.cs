@@ -8,7 +8,7 @@ using Nexgo.Data;
 using Nexgo.Helper;
 namespace Nexgo.Com.APIx4._5
 {
-    public class CityECRProtocl
+    public class CityECRProtoclController
     {
         //Purchase Identifier 
         public string pruchaseIdentifier;
@@ -45,8 +45,8 @@ namespace Nexgo.Com.APIx4._5
         public ECRRecieverModel recieverModel;
         private CommunicationService communicationService;
 
-        public CityECRProtocl(ECRRecieverModel recieverModel,string portName) {
-            this.recieverModel = recieverModel;
+        public CityECRProtoclController(string portName) {
+            this.recieverModel = new ECRRecieverModel();
             communicationService = new CommunicationService(recieverModel, portName);
 
 

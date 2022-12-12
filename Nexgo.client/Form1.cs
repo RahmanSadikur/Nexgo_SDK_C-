@@ -18,10 +18,8 @@ namespace Nexgo.client
 {
     public partial class Form1 : Form
     {
-        private  CityECRProtocl config;
-        SerialPort _serialPort;
-        public string receievedData = "";
-        public ECRRecieverModel recieverModel;
+        private  CityECRProtoclController cityECRProtoclController;
+
 
         // delegate is used to write to a UI control from a non-UI thread
         private delegate void SetTextDeleg(string text);
@@ -29,9 +27,10 @@ namespace Nexgo.client
         public Form1()
         {
             InitializeComponent();
-            this.recieverModel=new ECRRecieverModel();
-            this.recieverModel.PropertyChanged += new PropertyChangedEventHandler(sp_DataReceived);            
-            this.config = new CityECRProtocl(recieverModel,"COM10");
+            
+                  
+            this.cityECRProtoclController = new CityECRProtoclController("COM10");
+            this.cityECRProtoclController.recieverModel.PropertyChanged += new PropertyChangedEventHandler(sp_DataReceived);      
 
         }
 
@@ -39,16 +38,15 @@ namespace Nexgo.client
         private void ProcessBtn_Click(object sender, EventArgs e)
         {
             
-            this.config.SendingMessageToPos(amountTextBox.Text.ToString(), invoiceTextBox.Text.ToString());
-            if (recieverModel.IsError)
+            this.cityECRProtoclController.SendingMessageToPos(amountTextBox.Text.ToString(), invoiceTextBox.Text.ToString());
+            if (this.cityECRProtoclController.recieverModel.IsError)
             {
-                MessageBox.Show(recieverModel.ErrorMessage);
+                MessageBox.Show(this.cityECRProtoclController.recieverModel.ErrorMessage);
                 return;
             }
             
-            outputTextBox.Text = config.FinalhexString;
-            dataStringrtxb.Text = config.dataString;
-            recievedoutputrtxb.Text = this.recieverModel.FullString;
+            outputTextBox.Text = cityECRProtoclController.FinalhexString;
+            dataStringrtxb.Text = cityECRProtoclController.dataString;
         }
 
 
@@ -59,8 +57,8 @@ namespace Nexgo.client
             try
             {
 
-                
-                this.BeginInvoke(new SetTextDeleg(si_DataReceived), new object[] { this.recieverModel.FullString });
+
+                this.BeginInvoke(new SetTextDeleg(si_DataReceived), new object[] { this.cityECRProtoclController.recieverModel.FullString });
                
 
 
@@ -93,7 +91,7 @@ namespace Nexgo.client
         private void confirmbtn_Click(object sender, EventArgs e)
         {
             
-            config.SendingAcknowledgeToPos();
+            cityECRProtoclController.SendingAcknowledgeToPos();
             
         }
 
@@ -103,7 +101,7 @@ namespace Nexgo.client
         {
             if (!String.IsNullOrWhiteSpace(portNameTxb.Text) && !String.IsNullOrEmpty(portNameTxb.Text))
             {
-                config.OpenPort(portNameTxb.Text);
+                cityECRProtoclController.OpenPort(portNameTxb.Text);
             }
             else
             {
