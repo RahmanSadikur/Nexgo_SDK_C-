@@ -11,12 +11,11 @@ namespace Nexgo.Com.APIx4._5
 
 {
     
-    class CommunicationController
+    class CommunicationService
     {
         private readonly SerialPort serialPort;
-        private string receievedData;
         public ECRRecieverModel recieverModel;
-        public CommunicationController(ECRRecieverModel recieverModel
+        public CommunicationService(ECRRecieverModel recieverModel
             ,string portName,
             int baudRate = 115200,
             Handshake handShake = System.IO.Ports.Handshake.None,
@@ -31,7 +30,7 @@ namespace Nexgo.Com.APIx4._5
             this.OpenSerialPort(portName, baudRate, handShake, parity, dataBits, stopBits, readTimeout, writeTimeout);
             
         }
-        private void OpenSerialPort(string portName,
+        public void OpenSerialPort(string portName,
             int baudRate = 115200,
             Handshake handShake = System.IO.Ports.Handshake.None,
             Parity parity = Parity.None,
@@ -65,7 +64,7 @@ namespace Nexgo.Com.APIx4._5
                this.recieverModel.ErrorMessage = e.StackTrace;
            }
        }
-       ~CommunicationController()
+       ~CommunicationService()
        {
            this.CloseSerialPort();
        }
@@ -80,10 +79,10 @@ namespace Nexgo.Com.APIx4._5
                 var byteformatedText = DataConvertor.StringToHex(streamString);
                 streamString = byteformatedText.ToString();
                 if (!streamString.Equals("020001010301")){
-                    string s = receievedData.Substring(0, receievedData.IndexOf("41"));
-                    receievedData = receievedData.Remove(0, s.Length);
-                    this.receievedData = DataConvertor.HexToString(receievedData);
-                    this.recieverModel = ModelMapper.RecieverDataMap(receievedData);
+                    string s = streamString.Substring(0, streamString.IndexOf("41"));
+                    streamString = streamString.Remove(0, s.Length);
+                    streamString = DataConvertor.HexToString(streamString);
+                    ModelMapper.RecieverDataMap(streamString, ref  this.recieverModel);
                     
                 }
                 

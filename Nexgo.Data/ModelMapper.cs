@@ -8,14 +8,14 @@ namespace Nexgo.Data
 {
    public class ModelMapper
     {
-        public static ECRRecieverModel RecieverDataMap(string receievedData)
+       public static ECRRecieverModel RecieverDataMap(string receievedData, ref  ECRRecieverModel recieverModel)
         {
-            ECRRecieverModel recieverModel = new ECRRecieverModel();
+            //ECRRecieverModel recieverModel = new ECRRecieverModel();
             try
             {
                 
                 string[] splitedData = receievedData.Split('|');
-                recieverModel.CurrencyName = CleanData(splitedData.FirstOrDefault(a => a.Contains("B00")), 3);
+                 recieverModel.CurrencyName = CleanData(splitedData.FirstOrDefault(a => a.Contains("B00")), 3);
                 recieverModel.MaskedCaditCardNo = CleanData(splitedData.FirstOrDefault(a => a.Contains("Q01")), 3);
                 recieverModel.TransactionStatus = CleanData(splitedData.FirstOrDefault(a => a.Contains("F0")), 2) == "0" ? "Transaction failed" : "Transaction successful";  
                 recieverModel.TraceNo = CleanData(splitedData.FirstOrDefault(a => a.Contains("Q00")), 3);
@@ -28,7 +28,15 @@ namespace Nexgo.Data
                 var amountString = CleanData(splitedData.FirstOrDefault(a => a.Contains("A00")),3);
                 float amount;
                 if (float.TryParse(amountString, out amount)) recieverModel.Amount = amount / 100;
+
+                recieverModel.FullString = "Purchase Amount:" + recieverModel.Amount + ", " +
+                      "Invoice No:" + recieverModel.InvoiceId + ", " +
+                      "Currency Name:" + recieverModel.CurrencyName + ", " +
+                      "Card No: " + recieverModel.MaskedCaditCardNo + ", " +
+                      "Status: " + recieverModel.TransactionStatus + ", " +
+                      "Date: " + recieverModel.TransectionDateTime + ", ";
                 return recieverModel;
+
             }
             catch (Exception e)
             {

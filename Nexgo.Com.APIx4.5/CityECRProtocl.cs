@@ -40,92 +40,83 @@ namespace Nexgo.Com.APIx4._5
         public string DataHexFormat = "";
         //ready data for sending on pos
         public string FinalhexString = "";
-        public bool isError = false;
-        public string errorMessage = "";
-        private readonly SerialPort serial;
+
         public string receievedData = "";
         public ECRRecieverModel recieverModel;
+        private CommunicationService communicationService;
 
-        public CityECRProtocl(SerialPort serial,ECRRecieverModel recieverModel) {
+        public CityECRProtocl(ECRRecieverModel recieverModel,string portName) {
             this.recieverModel = recieverModel;
-            this.serial = serial;
+            communicationService = new CommunicationService(recieverModel, portName);
+
 
         }
-      
-        public void SendingDataToPos(string data = "020001010301")
+        public void OpenPort(string portName)
         {
-            
+
+            communicationService.OpenSerialPort(portName);
+        }
+        public void SendingAcknowledgeToPos()
+        {
+
+            communicationService.SendDataToSerialPort("020001010301");
+        }
+        public void SendingMessageToPos(string amount,string invoice)
+        {
             try
             {
-                if (!serial.IsOpen)
+                this.recieverModel.IsError = false;
+                //A00 means purchase and A01 means void
+                pruchaseIdentifier = "A00";
+                //B01 Identifier and 156 BDT currency code
+                currencyCode = "B01156";
+                //B00 Identifier and TK currency name
+                currencyName = "B00TK";
+                //Unique invoice Identifier
+                invoiceIdentifier = "Y00";
+                //U00cashier
+                regConfigIdentifier = "U0001";
+                //validation check
+                if (!float.TryParse(amount, out this.amount))
                 {
-                    serial.Open();
+                    this.recieverModel.IsError = true;
+                    this.recieverModel.ErrorMessage = "Invalid maount";
+                    return;
                 }
-                serial.DiscardInBuffer();
-                serial.DiscardOutBuffer();
+                if (!Int32.TryParse(invoice, out this.invoice))
+                {
+                    this.recieverModel.IsError = true;
+                    this.recieverModel.ErrorMessage = "Invalid invoice no";
+                    return;
+                }
+                
+                //amount * 100 (two decimal place fraction converted to decimal)
+                this.amount *= 100;
+                amount = this.amount.ToString();
+                //ex: A0020000|B00TK|B01156|Y0090|U0001
+                this.dataString = this.pruchaseIdentifier + amount + "|" + this.currencyName + "|" + this.currencyCode + "|" + this.invoiceIdentifier + invoice + "|" + regConfigIdentifier;
 
-                isError = false;
-
-                byte[] hexstring = DataConvertor.StringToByteArray(data);
-                serial.Write(hexstring, 0, hexstring.Length);
-
-
-
+                int count = this.dataString.Count() + 1;
+                //calculate len into hex
+                len = count.ToString("X4");
+                //convert data string into hex
+                this.DataHexFormat = DataConvertor.StringToHex(this.dataString);
+                //<stx><len><type> data string into hex<etx>
+                var hexDataWithoutLrc = this.stx + this.len + this.type + this.DataHexFormat + this.etx;
+                //calculate check sum
+                this.lrc = CheckSumCalculate(hexDataWithoutLrc);
+                //<stx><len><type> data string into hex<etx><lrc>
+                this.FinalhexString = hexDataWithoutLrc + this.lrc;
+                
+                communicationService.SendDataToSerialPort(this.FinalhexString);
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                this.isError = true;
-                this.errorMessage = "Failed to SEND\n" + data + "\n" + ex + "\n";
+                this.recieverModel.IsError = true;
+                this.recieverModel.ErrorMessage =e.Message;
+            }
+           
 
-            }
-        }
-       
-        public void ConvertStringIntoMesg(string dataString) {
-            this.dataString = dataString;
-            int count = this.dataString.Count() + 1;
-            //calculate len into hex
-            len = count.ToString("X4");
-            //convert data string into hex
-            this.DataHexFormat = DataConvertor.StringToHex(this.dataString);
-            //<stx><len><type> data string into hex<etx>
-            var hexDataWithoutLrc = this.stx + this.len + this.type + this.DataHexFormat + this.etx;
-            //calculate check sum
-            this.lrc = CheckSumCalculate(hexDataWithoutLrc);
-            //<stx><len><type> data string into hex<etx><lrc>
-            this.FinalhexString = hexDataWithoutLrc + this.lrc;
-            SendingDataToPos(this.FinalhexString);
-
-        }
-        public void SendMessageInit(string amount,string invoice)
-        {
-            //A00 means purchase and A01 means void
-            pruchaseIdentifier = "A00";
-            //B01 Identifier and 156 BDT currency code
-            currencyCode = "B01156";
-            //B00 Identifier and TK currency name
-            currencyName = "B00TK";
-            //Unique invoice Identifier
-            invoiceIdentifier = "Y00";
-            //U00cashier
-            regConfigIdentifier = "U0001";
-            //validation check
-            if(!float.TryParse(amount,out this.amount))
-            {
-                isError = true;
-                errorMessage = "Invalid maount";
-            }
-            if ( !Int32.TryParse(invoice, out this.invoice))
-            {
-                isError = true;
-                errorMessage = "Invalid invoice no";
-            }
-            isError = false;
-            //amount * 100 (two decimal place fraction converted to decimal)
-            this.amount *= 100;
-            amount = this.amount.ToString();
-            //ex: A0020000|B00TK|B01156|Y0090|U0001
-            this.dataString = this.pruchaseIdentifier+amount+"|"+ this.currencyName + "|" + this.currencyCode + "|"+ this.invoiceIdentifier + invoice + "|"+regConfigIdentifier;
-            ConvertStringIntoMesg(this.dataString);
         }
 
         private string CheckSumCalculate(string d)
