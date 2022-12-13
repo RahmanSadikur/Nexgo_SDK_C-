@@ -29,7 +29,7 @@ Example:
 ```c#
  this.cityECRProtoclController.OpenPort("COM10");
 ```
--To get the recieved data into client side you need to **PropertyChangedHendler** <br/>
+- To get the recieved data into client side you need to **PropertyChangedHendler** <br/>
 Example:
 ```c#
  this.cityECRProtoclController = new CityECRProtoclController("COM10");
