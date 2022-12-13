@@ -39,6 +39,9 @@ private delegate void SetTextDeleg(string text);
 ```c#
  this.cityECRProtoclController = new CityECRProtoclController("COM10");
  this.cityECRProtoclController.RecieverModel.PropertyChanged += new PropertyChangedEventHandler(ReceivedData);  
+```
+```c#
+
   private void ReceivedData (object sender, PropertyChangedEventArgs e)
         {
             try
