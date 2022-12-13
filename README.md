@@ -10,9 +10,10 @@ Nexgo.Entity consist only model and model mapper class
 + Nexgo.helper
 Nexgo.helper consist the static function that labeled as a helper class like Data convertor or Logger class.
 ---
-###To intregate this dll into your project you just need to communicate with Nexgo.Api.4.5 project's ICityECRPrtocolController
-####this controller contain the Model which consist all the information that recieved from the city bank pos machine
->>using SendingMessageToPos method you can send amount and invoice to the city bank pos machine.this method consist two parameter amount and invoice.
->>using SendingAcknowledgeToPos method you can send acknowledge to the city bank pos mechine.
->>using OpenPort method you can open the port in which your pos mechine is connected.
+## To intregate this dll into your project you just need to communicate with Nexgo.Api.4.5 project's ICityECRPrtocolController
+### this controller contain the Model which consist all the information that recieved from the city bank pos machine
+
+>using SendingMessageToPos method you can send amount and invoice to the city bank pos machine.this method consist two parameter amount and invoice.
+>using SendingAcknowledgeToPos method you can send acknowledge to the city bank pos mechine.
+>using OpenPort method you can open the port in which your pos mechine is connected.
 
