@@ -32,6 +32,11 @@ Example:
 - To get the recieved data into client side you need to **PropertyChangedHendler** <br/>
 Example:
 ```c#
+private ICityECRPrtocolController cityECRProtoclController;
+// delegate is used to write to a UI control from a non-UI thread
+private delegate void SetTextDeleg(string text);
+```
+```c#
  this.cityECRProtoclController = new CityECRProtoclController("COM10");
  this.cityECRProtoclController.RecieverModel.PropertyChanged += new PropertyChangedEventHandler(ReceivedData);  
   private void ReceivedData (object sender, PropertyChangedEventArgs e)
