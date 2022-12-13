@@ -39,7 +39,6 @@ namespace Nexgo.client
             this.label4 = new System.Windows.Forms.Label();
             this.processBtn = new System.Windows.Forms.Button();
             this.dataStringrtxb = new System.Windows.Forms.RichTextBox();
-            this.confirmbtn = new System.Windows.Forms.Button();
             this.recievedoutputrtxb = new System.Windows.Forms.RichTextBox();
             this.portNameTxb = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -103,7 +102,7 @@ namespace Nexgo.client
             // 
             // invoiceTextBox
             // 
-            this.invoiceTextBox.Location = new System.Drawing.Point(501, 88);
+            this.invoiceTextBox.Location = new System.Drawing.Point(428, 88);
             this.invoiceTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.invoiceTextBox.Name = "invoiceTextBox";
             this.invoiceTextBox.Size = new System.Drawing.Size(176, 20);
@@ -112,7 +111,7 @@ namespace Nexgo.client
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(455, 90);
+            this.label4.Location = new System.Drawing.Point(382, 90);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 13);
@@ -121,10 +120,10 @@ namespace Nexgo.client
             // 
             // processBtn
             // 
-            this.processBtn.Location = new System.Drawing.Point(204, 125);
+            this.processBtn.Location = new System.Drawing.Point(257, 142);
             this.processBtn.Margin = new System.Windows.Forms.Padding(2);
             this.processBtn.Name = "processBtn";
-            this.processBtn.Size = new System.Drawing.Size(151, 22);
+            this.processBtn.Size = new System.Drawing.Size(210, 32);
             this.processBtn.TabIndex = 19;
             this.processBtn.Text = "Process";
             this.processBtn.UseVisualStyleBackColor = true;
@@ -138,17 +137,6 @@ namespace Nexgo.client
             this.dataStringrtxb.Size = new System.Drawing.Size(396, 29);
             this.dataStringrtxb.TabIndex = 20;
             this.dataStringrtxb.Text = "";
-            // 
-            // confirmbtn
-            // 
-            this.confirmbtn.Location = new System.Drawing.Point(368, 125);
-            this.confirmbtn.Margin = new System.Windows.Forms.Padding(2);
-            this.confirmbtn.Name = "confirmbtn";
-            this.confirmbtn.Size = new System.Drawing.Size(151, 21);
-            this.confirmbtn.TabIndex = 21;
-            this.confirmbtn.Text = "Confirm";
-            this.confirmbtn.UseVisualStyleBackColor = true;
-            this.confirmbtn.Click += new System.EventHandler(this.confirmbtn_Click);
             // 
             // recievedoutputrtxb
             // 
@@ -165,7 +153,7 @@ namespace Nexgo.client
             this.portNameTxb.Location = new System.Drawing.Point(87, 31);
             this.portNameTxb.Margin = new System.Windows.Forms.Padding(2);
             this.portNameTxb.Name = "portNameTxb";
-            this.portNameTxb.Size = new System.Drawing.Size(413, 20);
+            this.portNameTxb.Size = new System.Drawing.Size(340, 20);
             this.portNameTxb.TabIndex = 23;
             // 
             // label1
@@ -180,10 +168,10 @@ namespace Nexgo.client
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(526, 34);
+            this.button1.Location = new System.Drawing.Point(469, 31);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(151, 22);
+            this.button1.Size = new System.Drawing.Size(151, 20);
             this.button1.TabIndex = 25;
             this.button1.Text = "Open Port";
             this.button1.UseVisualStyleBackColor = true;
@@ -200,7 +188,6 @@ namespace Nexgo.client
             this.Controls.Add(this.label1);
             this.Controls.Add(this.portNameTxb);
             this.Controls.Add(this.recievedoutputrtxb);
-            this.Controls.Add(this.confirmbtn);
             this.Controls.Add(this.dataStringrtxb);
             this.Controls.Add(this.processBtn);
             this.Controls.Add(this.invoiceTextBox);
@@ -215,7 +202,6 @@ namespace Nexgo.client
             this.MinimumSize = new System.Drawing.Size(756, 539);
             this.Name = "Form1";
             this.Text = "Form1";
-            
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,7 +219,6 @@ namespace Nexgo.client
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button processBtn;
         private System.Windows.Forms.RichTextBox dataStringrtxb;
-        private System.Windows.Forms.Button confirmbtn;
         private System.Windows.Forms.RichTextBox recievedoutputrtxb;
         private System.Windows.Forms.TextBox portNameTxb;
         private System.Windows.Forms.Label label1;

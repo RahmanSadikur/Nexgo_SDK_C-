@@ -82,6 +82,12 @@ namespace Nexgo.client
             try
             {
                 recievedoutputrtxb.Text = data.Trim();
+                DialogResult dialogResult = MessageBox.Show(data.Trim(), "Is all this ok?", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    cityECRProtoclController.SendingAcknowledgeToPos();
+                }
+
             }
             catch (Exception ex)
             {
@@ -91,12 +97,7 @@ namespace Nexgo.client
             
         }
 
-        private void confirmbtn_Click(object sender, EventArgs e)
-        {
-            
-            cityECRProtoclController.SendingAcknowledgeToPos();
-            
-        }
+
 
 
 

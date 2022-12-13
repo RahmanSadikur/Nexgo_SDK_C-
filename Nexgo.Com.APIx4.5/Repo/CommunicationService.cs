@@ -72,7 +72,7 @@ namespace Nexgo.Com.APIx4._5.Repo
        }
        private void RecieveDataFromSerialPort(object sender, SerialDataReceivedEventArgs e)
         {
-            Thread.Sleep(500);
+            //Thread.Sleep(200);
 
             try
             {

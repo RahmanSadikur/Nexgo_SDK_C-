@@ -30,11 +30,11 @@ namespace Nexgo.Data
                 if (float.TryParse(amountString, out amount)) recieverModel.Amount = amount / 100;
 
                 recieverModel.FullString = "Purchase Amount:" + recieverModel.Amount + ", " +
-                      "Invoice No:" + recieverModel.InvoiceId + ", " +
-                      "Currency Name:" + recieverModel.CurrencyName + ", " +
-                      "Card No: " + recieverModel.MaskedCaditCardNo + ", " +
-                      "Status: " + recieverModel.TransactionStatus + ", " +
-                      "Date: " + recieverModel.TransectionDateTime + ", ";
+                      "Invoice No:" + recieverModel.InvoiceId + "\n" +
+                      "Currency Name:" + recieverModel.CurrencyName + "\n" +
+                      "Card No: " + recieverModel.MaskedCaditCardNo + "\n" +
+                      "Status: " + recieverModel.TransactionStatus + "\n" +
+                      "Date: " + recieverModel.TransectionDateTime + "\n";
                 
 
             }

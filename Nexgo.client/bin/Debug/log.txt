@@ -1,2 +1,15 @@
-12/12/2022 2:56:52 PM	:	Invalid maount
-12/12/2022 2:58:04 PM	:	Invalid maount
+12/13/2022 10:18:02 AM	:	   at System.IO.Ports.SerialStream.Write(Byte[] array, Int32 offset, Int32 count, Int32 timeout)
+   at System.IO.Ports.SerialPort.Write(Byte[] buffer, Int32 offset, Int32 count)
+   at Nexgo.Com.APIx4._5.Repo.CommunicationService.SendDataToSerialPort(String data) in c:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Com.APIx4.5\Repo\CommunicationService.cs:line 141
+12/13/2022 10:19:07 AM	:	   at System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   at System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   at System.IO.Ports.SerialPort.Open()
+   at Nexgo.Com.APIx4._5.Repo.CommunicationService.SendDataToSerialPort(String data) in c:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Com.APIx4.5\Repo\CommunicationService.cs:line 133
+12/13/2022 10:19:10 AM	:	   at System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   at System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   at System.IO.Ports.SerialPort.Open()
+   at Nexgo.Com.APIx4._5.Repo.CommunicationService.SendDataToSerialPort(String data) in c:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Com.APIx4.5\Repo\CommunicationService.cs:line 133
+12/13/2022 10:19:13 AM	:	   at System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   at System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   at System.IO.Ports.SerialPort.Open()
+   at Nexgo.Com.APIx4._5.Repo.CommunicationService.SendDataToSerialPort(String data) in c:\Users\User-PC\source\repos\RahmanSadikur\Nexgo_SDK_C-\Nexgo.Com.APIx4.5\Repo\CommunicationService.cs:line 133
