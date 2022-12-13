@@ -1,14 +1,14 @@
 # Nexgo_SDK_C# -City Bank payment integration using Nexgo pos machine
 ___
 
-This solution (written in c# -.NET Framework 4.5) divided into four project
-1 Nexgo.Clients <br/>
+## This solution (written in c# -.NET Framework 4.5) divided into four project
++ Nexgo.Clients <br/>
 Nexgo.Client is windows form project.Its just a interface that communicate with user
-2 Nexgo.Api.4.5 <br/>
++ Nexgo.Api.4.5 <br/>
 All Interface and Business logic  are located in the Nexgo.Api.4.5 project.
-3 Nexgo.Data <br/>
++ Nexgo.Data <br/>
 Nexgo.Entity consist only model and model mapper class
-4 Nexgo.helper <br/>
++ Nexgo.helper <br/>
 Nexgo.helper consist the static function that labeled as a helper class like Data convertor or Logger class.
 ---
 ## To integrate this dll into your project you just need to communicate with Nexgo.Api.4.5 project's ICityECRPrtocolController
