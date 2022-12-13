@@ -1,14 +1,14 @@
-# Nexgo_SDK_C# -City Bank payment integration using Nexgo pos
+# Nexgo_SDK_C# -City Bank payment integration using Nexgo pos machine
 ___
 
 This solution (written in c# -.NET Framework 4.5) divided into four project
-+ Nexgo.Clients <br/>
+1 Nexgo.Clients <br/>
 Nexgo.Client is windows form project.Its just a interface that communicate with user
-+ Nexgo.Api.4.5 <br/>
+2 Nexgo.Api.4.5 <br/>
 All Interface and Business logic  are located in the Nexgo.Api.4.5 project.
-+ Nexgo.Entity <br/>
+3 Nexgo.Data <br/>
 Nexgo.Entity consist only model and model mapper class
-+ Nexgo.helper <br/>
+4 Nexgo.helper <br/>
 Nexgo.helper consist the static function that labeled as a helper class like Data convertor or Logger class.
 ---
 ## To integrate this dll into your project you just need to communicate with Nexgo.Api.4.5 project's ICityECRPrtocolController
@@ -19,12 +19,12 @@ Example:
 ```c#
  this.cityECRProtoclController.SendingMessageToPos(amountTextBox.Text.ToString(), invoiceTextBox.Text.ToString());
 ```
-- using **SendingAcknowledgeToPos** method you can send acknowledge to the city bank pos mechine. <br/>
+- using **SendingAcknowledgeToPos** method you can send acknowledge to the city bank pos machine. <br/>
 Example:
 ```c#
  this.cityECRProtoclController.SendingAcknowledgeToPos();
 ```
-- using **OpenPort method** you can open the port in which your pos mechine is connected. <br/>
+- using **OpenPort method** you can open the port in which your pos machine is connected. <br/>
 Example:
 ```c#
  this.cityECRProtoclController.OpenPort("COM10");
