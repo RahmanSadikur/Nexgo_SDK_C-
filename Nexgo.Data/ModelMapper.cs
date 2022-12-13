@@ -24,7 +24,9 @@ namespace Nexgo.Data
                 recieverModel.TransectionDateTime = CleanData(splitedData.FirstOrDefault(a => a.Contains("Q02")), 3);
                 recieverModel.TerminalId = CleanData(splitedData.FirstOrDefault(a => a.Contains("Q03")), 3);
                 recieverModel.MerchantId = CleanData(splitedData.FirstOrDefault(a => a.Contains("Q06")), 3);
-                recieverModel.IsError = false;
+                recieverModel.IsError = CleanData(splitedData.FirstOrDefault(a => a.Contains("F0")), 2) == "0"?true:false;
+                recieverModel.ErrorMessage = recieverModel.IsError ? "Transaction failed ," + CleanData(splitedData.FirstOrDefault(a => a.Contains("E00")), 3) : CleanData(splitedData.FirstOrDefault(a => a.Contains("E00")), 3);
+
                 var amountString = CleanData(splitedData.FirstOrDefault(a => a.Contains("A00")),3);
                 float amount;
                 if (float.TryParse(amountString, out amount)) recieverModel.Amount = amount / 100;
