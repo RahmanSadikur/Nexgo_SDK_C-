@@ -122,7 +122,7 @@ namespace Nexgo.Com.APIx4._5.Repo
             {
                 this.RecieverModel.IsError = true;
                 this.RecieverModel.ErrorMessage =e.Message;
-                LogHelper.Log(e.StackTrace);
+                LogHelper.Log(e.Message);
             }
            
 
@@ -144,7 +144,7 @@ namespace Nexgo.Com.APIx4._5.Repo
             }
             catch (Exception ex)
             {
-                LogHelper.Log(ex.StackTrace);
+                LogHelper.Log(ex.Message);
                 return string.Empty;
             }
 

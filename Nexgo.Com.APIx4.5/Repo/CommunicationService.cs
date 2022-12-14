@@ -62,8 +62,8 @@ namespace Nexgo.Com.APIx4._5.Repo
            catch (Exception e)
            {
                this.recieverModel.IsError = true;
-               this.recieverModel.ErrorMessage = e.StackTrace;
-               LogHelper.Log(e.StackTrace);
+               this.recieverModel.ErrorMessage = e.Message;
+               LogHelper.Log(e.Message);
            }
        }
        ~CommunicationService()
@@ -96,8 +96,8 @@ namespace Nexgo.Com.APIx4._5.Repo
             catch (Exception ex)
             {
                 this.recieverModel.IsError = true;
-                this.recieverModel.ErrorMessage = ex.StackTrace;
-                LogHelper.Log(ex.StackTrace);
+                this.recieverModel.ErrorMessage = ex.Message;
+                LogHelper.Log(ex.Message);
               
             }
 
@@ -117,8 +117,8 @@ namespace Nexgo.Com.APIx4._5.Repo
             catch (Exception e)
             {
                 this.recieverModel.IsError = true;
-                this.recieverModel.ErrorMessage = e.StackTrace;
-                LogHelper.Log(e.StackTrace);
+                this.recieverModel.ErrorMessage = e.Message;
+                LogHelper.Log(e.Message);
             }
 
 
@@ -146,8 +146,8 @@ namespace Nexgo.Com.APIx4._5.Repo
             catch (Exception ex)
             {
                 this.recieverModel.IsError = true;
-                this.recieverModel.ErrorMessage = ex.StackTrace;
-                LogHelper.Log(ex.StackTrace);
+                this.recieverModel.ErrorMessage = ex.Message;
+                LogHelper.Log(ex.Message);
 
             }
         }
