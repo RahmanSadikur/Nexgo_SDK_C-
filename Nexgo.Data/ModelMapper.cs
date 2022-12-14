@@ -44,7 +44,7 @@ namespace Nexgo.Data
             {
                 recieverModel.IsError = true;
                 recieverModel.ErrorMessage = e.Message;
-                LogHelper.Log(e.StackTrace);
+                LogHelper.Log(e.Message);
                
             }
            
